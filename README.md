@@ -7,7 +7,7 @@
 
 A full-stack application that provides automated, AI-driven code reviews using Google's Gemini AI. Submit your code and receive professional, detailed feedback in seconds!
 
-Live website link: [Website link](https://ai-code-reviewer-villwin007.netlify.app/)
+Live website link: [AI-Powered Code Reviewer](https://ai-code-reviewer-villwin007.netlify.app/)
 
 <img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/44b0b235-d23a-4612-ac13-1a822ca3349b" />
 
