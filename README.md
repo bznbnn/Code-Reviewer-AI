@@ -7,6 +7,9 @@
 
 A full-stack application that provides automated, AI-driven code reviews using Google's Gemini AI. Submit your code and receive professional, detailed feedback in seconds!
 
+<img width="1919" height="916" alt="image" src="https://github.com/user-attachments/assets/44b0b235-d23a-4612-ac13-1a822ca3349b" />
+
+
 ## ✨ Features
 
 - **🖥️ Modern Code Editor**: Syntax-highlighted code editor powered by CodeMirror
@@ -19,16 +22,47 @@ A full-stack application that provides automated, AI-driven code reviews using G
   - Positive reinforcement for well-written code
 - **⚡ Real-time Results**: Fast, markdown-formatted reviews
 - **🎯 Multi-language Support**: Adaptable for various programming languages
+- **🚀 Modern Stack**: Built with React + Vite frontend and Node.js + Express backend
+
+## 🏗️ Project Structure
+
+```
+AI-Powered-Code-Reviewer/
+├── frontend/
+│   ├── src/
+│   │   ├── App.jsx             # Main application component
+│   │   ├── main.jsx            # Entry point for React app
+│   │   ├── App.css             # Main CSS styles
+│   │   └── components/         # Reusable React components
+│   ├── index.html              # HTML template for the app
+│   ├── package.json            # Frontend dependencies and scripts
+│   ├── vite.config.js          # Vite build configuration
+│   └── README.md               # Frontend-specific documentation
+├── Backend/
+│   ├── src/
+│   │   ├── app.js              # Express application setup
+│   │   ├── routes/
+│   │   │   └── ai.routes.js    # API route definitions
+│   │   ├── controllers/
+│   │   │   └── ai.controller.js# Request handlers
+│   │   └── services/
+│   │       └── ai.service.js   # AI integration logic
+│   ├── server.js               # Server entry point
+│   ├── package.json            # Backend dependencies and scripts
+│   ├── INSTRUCTIONS.md         # Backend setup instructions
+│   └── .env.example            # Environment variables template
+└── README.md                   # Project overview (this file)
+```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn
-- Google Gemini API key
+- **Node.js** (v16 or higher)
+- **npm** or **yarn**
+- **Google Gemini API key** ([Get one here](https://aistudio.google.com/app/apikey))
 
-### Installation
+### Installation & Setup
 
 1. **Clone the repository**
    ```bash
@@ -42,9 +76,14 @@ A full-stack application that provides automated, AI-driven code reviews using G
    npm install
    ```
    
-   Create a `.env` file in the Backend directory:
+   **Set up environment variables:**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit the `.env` file:
    ```env
-   GOOGLE_GEMINI_KEY=your_gemini_api_key_here
+   GOOGLE_GEMINI_KEY=your_actual_gemini_api_key_here
    PORT=3000
    ```
 
@@ -56,137 +95,211 @@ A full-stack application that provides automated, AI-driven code reviews using G
 
 ### Running the Application
 
-1. **Start the Backend Server**
+1. **Start the Backend Server** (Terminal 1)
    ```bash
    cd Backend
-   npx nodemon
+   npx nodemon server.js
    ```
-   Server runs on `http://localhost:3000`
+   ✅ Backend running on: `http://localhost:3000`
 
-2. **Start the Frontend Development Server**
+2. **Start the Frontend Development Server** (Terminal 2)
    ```bash
    cd frontend
    npm run dev
    ```
-   Frontend runs on `http://localhost:5173`
+   ✅ Frontend running on: `http://localhost:5173`
 
 3. **Open your browser** and navigate to `http://localhost:5173`
 
-## 🏗️ Architecture
+## 🎯 How It Works
 
-### Frontend (React + Vite)
-- **Components**: Code editor, review display, loading states
-- **Technologies**: 
-  - React with Hooks
-  - CodeMirror for code editing
-  - Axios for API communication
-  - ReactMarkdown for rendering reviews
-- **Location**: `frontend/src/`
+### User Workflow
+1. **Write Code**: Use the built-in code editor to write or paste your code
+2. **Submit for Review**: Click the "Review Code" button
+3. **AI Analysis**: Your code is sent to the Gemini AI for comprehensive analysis
+4. **Get Feedback**: Receive detailed, markdown-formatted review with suggestions
 
-### Backend (Node.js + Express)
-- **API Routes**: RESTful endpoints for code review
-- **Controllers**: Request handling and validation
-- **Services**: AI integration and business logic
-- **Technologies**:
-  - Express.js framework
-  - Google Generative AI SDK
-  - CORS for cross-origin requests
-- **Location**: `Backend/src/`
-
-### AI Integration
-- **Model**: Google Gemini `gemini-2.5-flash-lite`
-- **Review Guidelines**: Custom system instructions for professional code review
-- **Response Format**: Structured markdown with categorized feedback
-
-## 📁 Project Structure
-
+### Technical Flow
 ```
-AI-Powered-Code-Reviewer/
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx          # Main application component
-│   │   ├── components/      # React components
-│   │   └── utils/          # Utility functions
-│   ├── package.json
-│   └── vite.config.js
-├── Backend/
-│   ├── src/
-│   │   ├── app.js          # Express application setup
-│   │   ├── routes/
-│   │   │   └── ai.routes.js # API route definitions
-│   │   ├── controllers/
-│   │   │   └── ai.controller.js # Request handlers
-│   │   └── services/
-│   │       └── ai.service.js # AI integration logic
-│   ├── server.js           # Server entry point
-│   ├── package.json
-│   └── .env.example
-└── README.md
+Frontend (React) → HTTP POST → Backend (Express) → Gemini AI → Review → Frontend
 ```
 
-## 🔧 API Endpoints
+### API Endpoints
 
-### POST `/ai/get-review`
-Submit code for AI review
+#### POST `/ai/get-review`
+Submit code for AI-powered review
 
-**Request Body:**
+**Request:**
 ```json
 {
-  "code": "function example() { return 'hello world'; }"
+  "code": "function example() {\n  console.log('Hello World');\n}"
 }
 ```
 
 **Response:**
 ```json
 {
-  "review": "## Code Review\n\n### Strengths\n- Clean function structure...\n\n### Improvements\n- Consider adding error handling...\n\n### Security\n- No apparent security issues..."
+  "review": "## Code Review\\n\\n### ✅ Strengths\\n- Clean function structure...\\n\\n### 🐛 Issues\\n- Missing error handling...\\n\\n### 💡 Suggestions\\n- Consider using const instead of function...\\n\\n### 🔒 Security\\n- No security vulnerabilities detected"
 }
 ```
 
-## 🎯 How It Works
+## 🛠️ Technology Stack
 
-1. **Code Submission**: User writes/pastes code in the web editor
-2. **API Request**: Frontend sends code to backend via POST request
-3. **AI Analysis**: Backend processes code through Gemini AI with custom review guidelines
-4. **Review Generation**: AI provides comprehensive markdown-formatted feedback
-5. **Result Display**: Frontend renders the review with proper formatting
+### Frontend
+- **React 18** - UI framework
+- **Vite** - Build tool and dev server
+- **CodeMirror** - Code editor with syntax highlighting
+- **Axios** - HTTP client for API calls
+- **ReactMarkdown** - Markdown rendering for reviews
 
-## 🛠️ Customization
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **Google Generative AI SDK** - Gemini AI integration
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variable management
 
-### Modifying Review Guidelines
-Edit the system instructions in `Backend/src/services/ai.service.js`:
+### AI & APIs
+- **Google Gemini AI** (`gemini-2.5-flash-lite`) - Code analysis and review generation
+- **RESTful API** - Communication between frontend and backend
+
+## 🔧 Configuration
+
+### Customizing Review Guidelines
+Modify the AI review behavior by editing `Backend/src/services/ai.service.js`:
 
 ```javascript
-const systemInstruction = `You are a senior code reviewer. Provide feedback on:
-- Code quality and best practices
-- Potential bugs and edge cases
-- Performance optimizations
-- Security concerns
-- Alternative approaches
-Format your response in markdown with clear sections.`;
+const systemInstruction = `
+You are an expert senior software engineer conducting code reviews. 
+Provide comprehensive feedback covering:
+
+🔍 CODE QUALITY
+- Readability and maintainability
+- Code organization and structure
+- Naming conventions
+- Code smells and anti-patterns
+
+🐛 BUGS & ISSUES  
+- Logical errors
+- Edge cases
+- Potential runtime issues
+- Type safety concerns
+
+⚡ PERFORMANCE
+- Optimization opportunities
+- Memory usage
+- Algorithm efficiency
+
+🔒 SECURITY
+- Vulnerability assessment
+- Input validation
+- Data protection
+
+💡 BEST PRACTICES
+- Language-specific conventions
+- Modern development practices
+- Scalability considerations
+
+Format your response in clear markdown with emojis for better readability.
+Be constructive but honest in your feedback.
+`;
 ```
 
 ### Adding Language Support
-The AI model can review multiple languages. Update the frontend to support syntax highlighting for additional languages:
+The AI model supports multiple programming languages. To enhance frontend support:
 
 ```javascript
-// In frontend components
+// In frontend components, add language extensions:
 import { javascript } from '@codemirror/lang-javascript';
 import { python } from '@codemirror/lang-python';
-// Add more language support as needed
+import { java } from '@codemirror/lang-java';
+// Add more as needed
+```
+
+## 📚 API Documentation
+
+### Code Review Endpoint
+
+**URL:** `POST http://localhost:3000/ai/get-review`
+
+**Headers:**
+```http
+Content-Type: application/json
+```
+
+**Request Body:**
+```typescript
+{
+  code: string;  // The source code to review
+}
+```
+
+**Response:**
+```typescript
+{
+  review: string;  // Markdown-formatted review
+  success: boolean;
+}
+```
+
+**Error Responses:**
+```typescript
+{
+  error: string;
+  success: false;
+}
+```
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+1. **Backend connection refused**
+   - Ensure backend is running on port 3000
+   - Check if `GOOGLE_GEMINI_KEY` is set in `.env`
+
+2. **AI review fails**
+   - Verify your Gemini API key is valid and has sufficient quota
+   - Check network connectivity to Google AI services
+
+3. **CORS errors**
+   - Backend CORS is configured for `http://localhost:5173`
+   - Ensure frontend is running on the correct port
+
+4. **Module not found errors**
+   - Run `npm install` in both frontend and backend directories
+   - Delete `node_modules` and `package-lock.json`, then reinstall
+
+### Debug Mode
+Enable detailed logging by setting environment variable:
+```bash
+DEBUG=true
 ```
 
 ## 🤝 Contributing
 
-We welcome contributions! Please feel free to submit pull requests, report bugs, or suggest new features.
+We welcome contributions! Here's how you can help:
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. **Fork** the repository
+2. **Create** a feature branch: `git checkout -b feature/amazing-feature`
+3. **Commit** your changes: `git commit -m 'Add amazing feature'`
+4. **Push** to the branch: `git push origin feature/amazing-feature`
+5. **Open** a Pull Request
 
-## 📝 License
+### Development Guidelines
+- Follow existing code style and structure
+- Add comments for complex logic
+- Update documentation for new features
+- Test both frontend and backend changes
+
+### Planned Features
+- [ ] Review history and favorites
+- [ ] GitHub integration
+- [ ] Custom review templates
+- [ ] Batch file analysis
+- [ ] CI/CD pipeline integration
+
+## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
@@ -195,25 +308,35 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Dhanush Saravanan**
 
 - GitHub: [@Villwin007](https://github.com/Villwin007)
-- Email: s.dhanush1106@gmail.com
+- Email: [s.dhanush1106@gmail.com](mailto:s.dhanush1106@gmail.com)
+- Portfolio: [Your Portfolio/LinkedIn]
 
 ## 🙏 Acknowledgments
 
-- Google Gemini AI for powering the code reviews
-- CodeMirror for the excellent code editor component
-- React and Node.js communities for amazing tools and libraries
+- **Google Gemini AI** for providing powerful code analysis capabilities
+- **CodeMirror** team for the excellent code editor component
+- **React** and **Node.js** communities for amazing tools and libraries
+- **Vite** team for the fast build tool and dev experience
 
-## 🔮 Future Enhancements
+## 🔗 Useful Links
 
-- [ ] Support for multiple programming languages
-- [ ] Code review history and saving functionality
-- [ ] Integration with GitHub repositories
-- [ ] Custom review templates
-- [ ] Batch code review capabilities
-- [ ] CI/CD pipeline integration
+- [Google AI Studio](https://aistudio.google.com/) - Get Gemini API key
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [Express.js Guide](https://expressjs.com/en/guide/routing.html)
+- [Gemini API Documentation](https://ai.google.dev/docs)
 
 ---
 
-**⭐ Star this repo if you found it helpful!**
+**⭐ If you find this project helpful, please give it a star on GitHub!**
 
-For questions or support, please open an issue or contact [s.dhanush1106@gmail.com](mailto:s.dhanush1106@gmail.com).
+For questions, support, or contributions, please open an issue or contact [s.dhanush1106@gmail.com](mailto:s.dhanush1106@gmail.com).
+
+---
+
+<div align="center">
+
+**Happy Coding! 🚀**
+
+*"Better code through AI-powered insights"*
+
+</div>
